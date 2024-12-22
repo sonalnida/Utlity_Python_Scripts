@@ -1,0 +1,22 @@
+# Initialize dictionary to store mapping of keys and values
+d = {}
+
+# Read the file containing mappings and populate the dictionary
+with open('juv_meta.txt', 'r') as f:
+    for line in f:
+        id1 = line.split('\t')  # Split the line by tab to extract key-value pairs
+        d[id1[0]] = id1[1]  # Store the key-value pair in the dictionary
+
+# Open the second file to perform replacements based on the dictionary
+with open ('rxn_you.txt', 'r') as f1:
+    with open("you_replaced.txt", "w") as text_file:
+        for line1 in f1:
+            # Skip empty lines
+            if not line1:
+                continue
+            # Iterate through the dictionary and replace occurrences of keys in the line
+            for f_key, f_value in d.items():
+                if f_key in line1:
+                    line1 = line1.replace(f_key, f_value)
+            # Write the modified line to the output file
+            text_file.write(line1)
