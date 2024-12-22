@@ -1,0 +1,5 @@
+*.py linguist-detectable
+*.r linguist-detectable
+*.nextflow linguist-detectable
+*.Dockerfile linguist-detectable
+*.md linguist-documentation
